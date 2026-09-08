@@ -35,7 +35,7 @@ def create_flag ():
                 break
             game_field_matrix[row][col] = consts.FLAG_SQUARE #משתנה של דגל
 
-#יוצר מוקש במיקום רנדומאלי
+#יוצר מוקש במיקום רנדומאלי מציב אותו ברשימה ומחזיר מילון
 def create_mine():
     row = random.randrange(0, consts.BOARD_ROWS)
     col = random.randrange(0, (consts.BOARD_COLS - 2))
@@ -44,15 +44,14 @@ def create_mine():
         row = random.randrange(0, consts.BOARD_ROWS)
         col = random.randrange(0, (consts.BOARD_COLS - 2))
 
-    return ({ #מילון
-
+    add_mines_to_game_field(row, col)
+    return ({
+        "row" : row,
+        "col" : col,
+        "mine_x": get_x(col),
+        "mine_y": get_y(row),
 
     })
-
-
-    #להוסיף שנוצר מילון ששומר את הערכים של שורה תור פעולת x ופעולת y
-
-
 
 #פעולה שבודקת אם כבר יש מוקש בערכים שקבלנו
 def all_reday_mine(row,col):
@@ -65,24 +64,22 @@ def all_reday_mine(row,col):
     return all_reday
 
 
-
-
-def multiple_mine():
+def create_multiple_mine():
 
     #לולאה שעוברת לפי מספר המוקשים שמבוקש
     #יוצרת מוקש
     #מוסיפה אותו לרשימת מוקשים
+    for num_mines in range(consts.MINES_COUNT):
+        consts.MINES_LIST.append(create_mine())
 
-def add_mines_to_game_field():
+def add_mines_to_game_field(row,col):
 
-
-    #לולאה שעוברת על כל הרשימה
-    MINES_LIST
         for i in range(3):
             game_field_matrix[row][(col + i)] = consts.MINE_SQUARE
 
 
 
+#פעולות get
 
 def get_x(col): # מקבל את המיקום בשורה ומחזיר את המיקום x שלו במסך
     return (col * consts.CELL_SIZE)
