@@ -40,6 +40,7 @@ FLAG_COLS = 4
 MINES_COUNT = 20
 MINE_ROW = 1
 MINE_COLS = 3
+MINES_LIST = []
 
 #const for square
 EMPTY_SQUARE = "EMPTY"
