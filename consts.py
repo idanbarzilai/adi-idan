@@ -1,4 +1,6 @@
 #consts for screen
+from soldier import legs_place
+
 BACKGROUND_SCREEN = (143, 188, 143)
 MESSAGE_TEXT = "Welcome to The Flag game.\nHave Fun!"
 EXPLOTION_IMG = "explotion.png"
@@ -15,7 +17,7 @@ TELEPORT_IMG = "teleport.png"
 #const for screen field
 BOARD_ROWS = 25
 BOARD_COLS = 50
-CELL_SIZE = 20
+CELL_SIZE = 20 # pixels per cell
 WINDOW_WIDTH = BOARD_COLS * CELL_SIZE
 WINDOW_HEIGHT = BOARD_ROWS * CELL_SIZE
 
@@ -25,12 +27,14 @@ SOLDIER_COLS = 2
 SOLDIER_BODY_ROWS = 3 # the upper part
 SOLDIER_FEET_ROWS = 1 # the lower part
 SOLDIER_START_PLACE = (0,0)
+BODY_PLACE=[]
+LEGS_PLACE=[]
 
 #consts for flag
 FLAG_ROWS = 3
 FLAG_COLS = 4
-FLAG_ROW = BOARD_ROWS - FLAG_ROWS
-FLAG_COL = BOARD_COLS - FLAG_COLS
+# FLAG_ROW = BOARD_ROWS - FLAG_ROWS
+# FLAG_COL = BOARD_COLS - FLAG_COLS
 
 #consts for mines
 MINES_COUNT = 20
@@ -38,7 +42,11 @@ MINE_ROW = 1
 MINE_COLS = 3
 
 #const for square
-NO_MINE_SQUARE = "EMPTY"
+EMPTY_SQUARE = "EMPTY"
+BODY_SQUARE = "BODY"
+LEGS_SQUARE = "LEGS"
+MINE_SQUARE = "MINE"
+FLAG_SQUARE = "FLAG"
 
 #consts for status:
 RUNNING_STATE = 1
