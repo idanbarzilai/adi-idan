@@ -1,3 +1,6 @@
+import random
+from random import randrange
+
 import consts
 
 game_field_matrix = []
@@ -32,7 +35,67 @@ def create_flag ():
                 break
             game_field_matrix[row][col] = consts.FLAG_SQUARE #משתנה של דגל
 
+#יוצר מוקש במיקום רנדומאלי
+def create_mine():
+    row = random.randrange(0, consts.BOARD_ROWS)
+    col = random.randrange(0, (consts.BOARD_COLS - 2))
 
-def
+    while (all_reday_mine(row,col)):
+        row = random.randrange(0, consts.BOARD_ROWS)
+        col = random.randrange(0, (consts.BOARD_COLS - 2))
 
+    return ({ #מילון
+
+
+    })
+
+
+    #להוסיף שנוצר מילון ששומר את הערכים של שורה תור פעולת x ופעולת y
+
+
+
+#פעולה שבודקת אם כבר יש מוקש בערכים שקבלנו
+def all_reday_mine(row,col):
+
+    all_reday = False
+    for i in range(3):
+        if not (game_field_matrix[row][(col + i)] == consts.EMPTY_SQUARE):
+            all_reday = True
+
+    return all_reday
+
+
+
+
+def multiple_mine():
+
+    #לולאה שעוברת לפי מספר המוקשים שמבוקש
+    #יוצרת מוקש
+    #מוסיפה אותו לרשימת מוקשים
+
+def add_mines_to_game_field():
+
+
+    #לולאה שעוברת על כל הרשימה
+    MINES_LIST
+        for i in range(3):
+            game_field_matrix[row][(col + i)] = consts.MINE_SQUARE
+
+
+
+
+def get_x(col): # מקבל את המיקום בשורה ומחזיר את המיקום x שלו במסך
+    return (col * consts.CELL_SIZE)
+
+
+def get_y(row):#מקבל באיזה שורה זה נמצא ומחזיר את מיקום y שלו במסך
+    return (row * consts.CELL_SIZE)
+
+
+def get_w(x , num_col):#מקבל את מיקום הx של האובייקט ומחזיר את הרוחב שלו (ערך הx בפינה הימנית)
+    return (x * num_col)
+
+
+def get_h(y, num_row):# מקבל את המיקום y  של האובייקט ומחזיר את הגובה שלו, בערך של y בקצה התחתון של האובייקט
+    return (y * num_row)
 
