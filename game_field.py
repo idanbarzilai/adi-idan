@@ -24,13 +24,13 @@ def create_flag ():
 
     for row in range(len(game_field_matrix) - 1 , -1 , -1 ):
 
-        if top_row <= (row + 1):
+        if top_row <= (row + 1): #בודק אם הגעתי עברתי את המיקום האחרון
             break
 
         for col in range(len(game_field_matrix[row]) - 1 , -1 , -1 ):
-            if top_col <= (col + 1):
+            if top_col <= (col + 1): #בודק אם הגעתי ועברתי את המיקום האחרון בשורה
                 break
-            game_field_matrix[row][col] = consts.flag #משתנה של דגל
+            game_field_matrix[row][col] = consts.FLAG_SQUARE #משתנה של דגל
 
 
 
