@@ -33,7 +33,6 @@ def create_flag ():
             game_field_matrix[row][col] = consts.FLAG_SQUARE #משתנה של דגל
 
 
-
-
+def
 
 
