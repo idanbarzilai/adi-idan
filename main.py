@@ -18,3 +18,8 @@ def main():
             if soldier.is_soldier_on_flag() or soldier.is_soldier_on_mine():
                 running = False
 
+
+
+
+
+
