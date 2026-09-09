@@ -77,27 +77,38 @@ def movement_type(event):
                 d_left_right = 1
         return [d_up_down,d_left_right]
 
-def movement(event):
-    dR = movement_type(event)[0]
-    dC = movement_type(event)[1]
+def empty_place_given(lst):
+    for item in lst:
+        game_field.game_field_matrix[item[0]][item[1]] == consts.EMPTY_SQUARE
 
-    consts.SOLDIER_PLACE = consts.BODY_PLACE + consts.LEGS_PLACE
+def soldier_place_body_given(lst):
+    for item in lst:
+        game_field.game_field_matrix[item[0]][item[1]] == consts.BODY_SQUARE
 
-    in_mat = True
-    for item in consts.SOLDIER_PLACE:
-        new_r = item[0] + dR
-        new_c = item[1] + dC
-        if new_r >= consts.BOARD_ROWS or new_c >= consts.BOARD_COLS:
-            in_mat = False
-            break
-    if in_mat:
-        for item in consts.SOLDIER_PLACE:
-            item[0] += dR
-            item[1] += dC
+def soldier_place_leg_given(lst):
+    for item in lst:
+        game_field.game_field_matrix[item[0]][item[1]] == consts.LEGS_SQUARE
 
+#לעבור על הלולאה להפוך את המקומות הקודמים לריקים ואת החדשים לגוף ורגליים , לא צריך לבדוק תקינות כי היא נבדקה כבר
+def movement(dr,dc):
+    empty_place_given()
+    new_r = player_r + dc
+    new_c = player_c + dr
 
+    if grid[new_r][new_c] == TILE_WALL:
+        return player_r, player_c, 0, False
 
+    collected_score = 0  ####
+    hit_mine = False  #####
 
+    if grid[new_r][new_c] == TILE_DIAMOND:
+        collected_score = 50
+
+    elif grid[new_r][new_c] == TILE_MINE:
+        hit_mine = True
+        grid[new_r][new_c] = TILE_EMPTY
+
+    return new_r, new_c, collected_score, hit_mine
 
 
 
