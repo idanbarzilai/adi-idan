@@ -7,7 +7,6 @@ import game_field
 def body_initial_place():
     for i in range(0, consts.SOLDIER_BODY_ROWS):
         for j in range(consts.SOLDIER_COLS):
-
             game_field.game_field_matrix[i][j] = consts.BODY_SQUARE
             consts.BODY_PLACE.append([i,j])
             #אם לא תעבוד הרשימה של כל הגוף אז להוסיף פה הוספה
@@ -57,59 +56,33 @@ def is_soldier_on_flag():
 def is_in_field(place):
     return place in game_field.game_field_matrix
 #place of body
-def movement_type(event):
-        d_up_down = 0
-        d_left_right = 0
-        if event.type == pygame.KEYDOWN:
-            d_up_down = 0
-            d_left_right = 0
-            if event.key == pygame.K_UP:
-                d_up_down = -1
-                d_left_right = 0
-            elif event.key == pygame.K_DOWN:
-                d_up_down = 1
-                d_left_right = 0
-            elif event.key == pygame.K_LEFT:
-                d_up_down = 0
-                d_left_right = -1
-            elif event.key == pygame.K_RIGHT:
-                d_up_down = 0
-                d_left_right = 1
-        return [d_up_down,d_left_right]
 
 def empty_place_given(lst):
     for item in lst:
-        game_field.game_field_matrix[item[0]][item[1]] == consts.EMPTY_SQUARE
-
-def soldier_place_body_given(lst):
-    for item in lst:
-        game_field.game_field_matrix[item[0]][item[1]] == consts.BODY_SQUARE
-
-def soldier_place_leg_given(lst):
-    for item in lst:
-        game_field.game_field_matrix[item[0]][item[1]] == consts.LEGS_SQUARE
+        game_field.game_field_matrix[item[0]][item[1]] = consts.EMPTY_SQUARE
 
 #לעבור על הלולאה להפוך את המקומות הקודמים לריקים ואת החדשים לגוף ורגליים , לא צריך לבדוק תקינות כי היא נבדקה כבר
 def movement(dr,dc):
-    empty_place_given()
-    new_r = player_r + dc
-    new_c = player_c + dr
-
-    if grid[new_r][new_c] == TILE_WALL:
-        return player_r, player_c, 0, False
-
-    collected_score = 0  ####
-    hit_mine = False  #####
-
-    if grid[new_r][new_c] == TILE_DIAMOND:
-        collected_score = 50
-
-    elif grid[new_r][new_c] == TILE_MINE:
-        hit_mine = True
-        grid[new_r][new_c] = TILE_EMPTY
-
-    return new_r, new_c, collected_score, hit_mine
-
+    empty_place_given(consts.SOLDIER_PLACE)
+    counter1=0
+    counter2=0
+    for item in consts.BODY_PLACE:
+        if (item[0] + dr) < 0 or (item[0]+dr)>=consts.BOARD_ROWS or (item[1] + dc) < 0 or (item[1]+dc)>=consts.BOARD_COLS:
+            counter1+=1
+    for item in consts.LEGS_PLACE:
+        if item[0] + dr < consts.BOARD_ROWS or item[0]+dr>=consts.BOARD_ROWS or item[1] + dc < consts.BOARD_COLS or item[1]+dc>=consts.BOARD_COLS:
+            counter2+=1
+    if counter1== 0 or counter2== 0:
+       for item in consts.BODY_PLACE:
+           item[0] += dr
+           item[1] += dc
+           game_field.game_field_matrix[item[0]][item[1]] = consts.BODY_SQUARE
+       for item in consts.LEGS_PLACE:
+           item[0] += dr
+           item[1] += dc
+           game_field.game_field_matrix[item[0]][item[1]] = consts.LEGS_PLACE
+    consts.SOLDIER_PLACE = consts.BODY_PLACE + consts.LEGS_PLACE
+    print(consts.SOLDIER_PLACE)
 
 
 

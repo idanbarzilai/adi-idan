@@ -27,7 +27,8 @@ def event_handler():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
+        dr = 0
+        dc = 0
         if event.type == pygame.KEYDOWN:
             dr, dc = 0, 0
             if event.key == pygame.K_UP:
@@ -39,12 +40,9 @@ def event_handler():
             elif event.key == pygame.K_RIGHT:
                 dc = 1
         if dr != 0 or dc != 0:
+            soldier.movement(dr, dc)
 
-            player_r, player_c, pts, mine = move_player(dungeon, player_r, player_c, dr, dc)
-            score += pts
-            if mine:
-                lives -= 1
-                print("BOOM! Hit a mine. Lives left:", lives)
+
 
 if __name__ == '__main__':
     main()
