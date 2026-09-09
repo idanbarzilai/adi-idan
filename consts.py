@@ -1,6 +1,7 @@
 #consts for screen
 
 BACKGROUND_SCREEN = (143, 188, 143)
+BACKGROUND_DARK_SCREEN = (0, 139, 69)
 MESSAGE_TEXT = "Welcome to The Flag game.\nHave Fun!"
 EXPLOTION_IMG = "explotion.png"
 FLAG_IMG = "flag.png"

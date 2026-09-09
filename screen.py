@@ -1,5 +1,5 @@
 import pygame
-
+import consts
 import game_field
 
 
