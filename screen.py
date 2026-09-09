@@ -3,6 +3,19 @@ import soldier
 import consts
 import game_field
 
+screen = pygame.display.set_mode(
+        (consts.WINDOW_WIDTH, consts.WINDOW_HEIGHT))
+
+def draw_game(game_state):
+    if game_state["original_screen"]:
+       screen.fill(consts.BACKGROUND_SCREEN)
+    elif game_state["dark_screen"]:
+        screen.fill(consts.BACKGROUND_DARK_SCREEN)
+        for i in range(consts.BOARD_ROWS):
+            for j in range(consts.BOARD_COLS):
+                pygame.draw.rect(screen, consts.RECT_COLOR, i * consts.CELL_SIZE, j = consts.CELL_SIZE, width=1)
+    pygame.display.flip()
+
 
 def create_soldier_screen():
     soldier1 = pygame.image.load("soldier.png")
