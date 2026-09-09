@@ -29,7 +29,7 @@ SOLDIER_FEET_ROWS = 1 # the lower part
 SOLDIER_START_PLACE = (0,0)
 BODY_PLACE=[]
 LEGS_PLACE=[]
-SOLDIER_PLACE = []
+SOLDIER_PLACE = BODY_PLACE + LEGS_PLACE #לבדק שעובד
 
 #consts for flag
 FLAG_ROWS = 3
