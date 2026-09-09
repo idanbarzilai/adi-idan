@@ -4,16 +4,16 @@ BACKGROUND_SCREEN = (143, 188, 143)
 BACKGROUND_DARK_SCREEN = (0, 0, 0)
 RECT_COLOR = (0, 139, 69)
 MESSAGE_TEXT = "Welcome to The Flag game.\nHave Fun!"
-EXPLOTION_IMG = "explotion.png"
-FLAG_IMG = "flag.png"
-GRASS_IMG = "grass.png"
-GUARD_IMG = "guard.png"
-INJURY_IMG = "injury.png"
-MINE_IMG = "mine.png"
-SNAKE_IMG = "snake.png"
+EXPLOTION_IMG = "pictures/explotion.png"
+FLAG_IMG = "pictures/flag.png"
+GRASS_IMG = "pictures/grass.png"
+GUARD_IMG = "pictures/guard.png"
+INJURY_IMG = "pictures/injury.png"
+MINE_IMG = "pictures/mine.png"
+SNAKE_IMG = "pictures/snake.png"
 SOLDIER = "pictures/soldier.png"
-SOLDIER_NIGHT_IMG = "soldier_night.png"
-TELEPORT_IMG = "teleport.png"
+SOLDIER_NIGHT_IMG = "pictures/soldier_night.png"
+TELEPORT_IMG = "pictures/teleport.png"
 
 #const for screen field
 BOARD_ROWS = 25

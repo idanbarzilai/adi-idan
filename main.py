@@ -30,6 +30,9 @@ def event_handler():
 
         if event.type == pygame.KEYDOWN:
             dr, dc = 0, 0
+            if event.key == pygame.K_SPACE:
+                #משנה את הסטטוס שדארק
+                game_state["screen_status"] = "dark"
             if event.key == pygame.K_UP:
                 dr = -1
             elif event.key == pygame.K_DOWN:

@@ -8,22 +8,66 @@ screen = pygame.display.set_mode(
 
 
 
-def draw_soldier(soldier_creation):
-    soldier_image = pygame.image.load(consts.SOLDIER)
+def draw_soldier(soldier_creation, png = consts.SOLDIER):
+    soldier_image = pygame.image.load(png)
     sized_soldier = pygame.transform.scale(soldier_image, (soldier_creation["w"] * 2, soldier_creation["h"]))
     screen.blit(sized_soldier,(soldier_creation["x"],soldier_creation["y"]))
+
+
+def draw_flag(x):
+    pass
+
+def draw_mines(x):
+    pass
+
+def draw_grid_black():
+    screen.fill(consts.BACKGROUND_DARK_SCREEN)
+    for i in range(consts.BOARD_ROWS):
+        for j in range(consts.BOARD_COLS):
+            pygame.draw.rect(screen, consts.BACKGROUND_DARK_SCREEN, i * consts.CELL_SIZE, j=consts.CELL_SIZE,
+                             width=1)
+    pass
+
+def draw_bushs():
+    pass
+
+def draw_welcom():
+    pass
+
+def draw_win():
+    pass
+def draw_loss():
+    pass
 
 
 def draw_game(game_state):
     if game_state["screen_status"] == 'light' :
         screen.fill(consts.BACKGROUND_SCREEN)
+        draw_soldier(game_state['soldier'])
+        draw_flag()
+        draw_bushs()
+
+        draw_welcom()
+
+        if(game_state["state"] == 3):
+            draw_win()
+
+        elif(game_state["state"] == 2):
+            draw_loss()
+
+
+
+
+
     elif game_state["screen_status"] == "dark":
-        screen.fill(consts.BACKGROUND_DARK_SCREEN)
-        for i in range(consts.BOARD_ROWS):
-            for j in range(consts.BOARD_COLS):
-                pygame.draw.rect(screen, consts.BACKGROUND_DARK_SCREEN, i * consts.CELL_SIZE, j=consts.CELL_SIZE,
-                                    width=1)
-    draw_soldier(game_state['soldier'])
+        draw_grid_black()
+        draw_soldier(game_state['soldier'], png = consts.SOLDIER_NIGHT_IMG)
+        draw_flag()
+        draw_mines()
+        pygame.time.delay(10)
+        game_state["screen_status"] = "light"
+
+
     pygame.display.flip()
 
 

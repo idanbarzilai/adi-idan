@@ -79,19 +79,22 @@ def movement_type(event):
 
 def empty_place_given(lst):
     for item in lst:
-        game_field.game_field_matrix[item[0]][item[1]] == consts.EMPTY_SQUARE
+        game_field.game_field_matrix[item[0]][item[1]] = consts.EMPTY_SQUARE
 
 def soldier_place_body_given(lst):
     for item in lst:
-        game_field.game_field_matrix[item[0]][item[1]] == consts.BODY_SQUARE
+        game_field.game_field_matrix[item[0]][item[1]] = consts.BODY_SQUARE
 
 def soldier_place_leg_given(lst):
     for item in lst:
-        game_field.game_field_matrix[item[0]][item[1]] == consts.LEGS_SQUARE
+        game_field.game_field_matrix[item[0]][item[1]] = consts.LEGS_SQUARE
 
 #לעבור על הלולאה להפוך את המקומות הקודמים לריקים ואת החדשים לגוף ורגליים , לא צריך לבדוק תקינות כי היא נבדקה כבר
 def movement(dr,dc):
-    empty_place_given()
+    empty_place_given(consts.SOLDIER_PLACE)
+    for item in consts.SOLDIER_PLACE:
+
+
     new_r = player_r + dc
     new_c = player_c + dr
 
