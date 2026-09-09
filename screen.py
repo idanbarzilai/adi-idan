@@ -1,3 +1,5 @@
+import random
+
 import pygame
 import soldier
 import consts
@@ -14,22 +16,33 @@ def draw_soldier(soldier_creation, png = consts.SOLDIER):
     screen.blit(sized_soldier,(soldier_creation["x"],soldier_creation["y"]))
 
 
-def draw_flag(x):
-    pass
+def draw_flag():
+    flag_image = pygame.image.load(consts.FLAG_IMG)
+    sized_flag = pygame.transform.scale(flag_image,(game_field.get_x(consts.FLAG_COLS),game_field.get_y(consts.FLAG_ROWS)))
+    screen.blit(sized_flag,(game_field.get_x(consts.FLAG_COL), game_field.get_y(consts.FLAG_ROW)))
 
-def draw_mines(x):
-    pass
+def draw_mines():
+    mine_image = pygame.image.load(consts.MINE_IMG)
+    sized_mine = pygame.transform.scale(mine_image,(game_field.get_x(consts.MINE_COLS),game_field.get_y(consts.MINE_ROW)))
+    for mine in consts.MINES_LIST:
+        screen.blit(sized_mine,(mine["mine_x"],mine["mine_y"]))
+
 
 def draw_grid_black():
     screen.fill(consts.BACKGROUND_DARK_SCREEN)
-    for i in range(consts.BOARD_ROWS):
+    '''
+        for i in range(consts.BOARD_ROWS):
         for j in range(consts.BOARD_COLS):
             pygame.draw.rect(screen, consts.BACKGROUND_DARK_SCREEN, i * consts.CELL_SIZE, j=consts.CELL_SIZE,
                              width=1)
-    pass
+    '''
+
 
 def draw_bushs():
-    pass
+    bushs_image = pygame.image.load(consts.GRASS_IMG)
+    sized_bushs = pygame.transform.scale(bushs_image,(60,60))
+    for bushs in range(20):
+        screen.blit(sized_bushs, (game_field.get_x(random.randrange(0, (consts.BOARD_COLS - 2))), (game_field.get_y(random.randrange(0, consts.BOARD_ROWS)))))
 
 def draw_welcom():
     pass
@@ -61,10 +74,10 @@ def draw_game(game_state):
 
     elif game_state["screen_status"] == "dark":
         draw_grid_black()
-        draw_soldier(game_state['soldier'], png = consts.SOLDIER_NIGHT_IMG)
+        draw_soldier(game_state['soldier'], consts.SOLDIER_NIGHT_IMG)
         draw_flag()
         draw_mines()
-        pygame.time.delay(10)
+        pygame.time.delay(10000000)
         game_state["screen_status"] = "light"
 
 

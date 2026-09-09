@@ -11,7 +11,10 @@ game_state = {
 }
 
 def main():
-    game_field.create_game_field()  # יוצר את הגיים פילד
+    game_field.create_game_field() # יוצר את הגיים פילד
+    game_field.create_flag()
+    game_field.create_multiple_mine()
+
     game_state["soldier"] = soldier.create_soldier()
 
     pygame.init()

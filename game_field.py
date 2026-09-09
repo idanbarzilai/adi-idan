@@ -88,7 +88,7 @@ def get_y(row):#מקבל באיזה שורה זה נמצא ומחזיר את מ�
 
 
 def get_w(x , num_col):#מקבל את מיקום הx של האובייקט ומחזיר את הרוחב שלו
-    return ( get_x(num_col) - (x * num_col) )
+    return ( get_x(num_col) - (x * num_col))
 
 
 def get_h(y, num_row):# מקבל את המיקום y  של האובייקט ומחזיר את הגובה שלו
