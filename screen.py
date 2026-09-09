@@ -6,35 +6,35 @@ import game_field
 screen = pygame.display.set_mode(
         (consts.WINDOW_WIDTH, consts.WINDOW_HEIGHT))
 
+
+
+def drow_soldier(soldier):
+
+    soldier_image = pygame.image.load("soldier.png")
+    sized_soldier = pygame.transform.scale(soldier_image, (soldier["w"], soldier["h"]))
+    screen.blit(sized_soldier,(soldier["x"],soldier["y"])
+
+
 def draw_game(game_state):
     if game_state["original_screen"]:
-       screen.fill(consts.BACKGROUND_SCREEN)
+        screen.fill(consts.BACKGROUND_SCREEN)
     elif game_state["dark_screen"]:
         screen.fill(consts.BACKGROUND_DARK_SCREEN)
         for i in range(consts.BOARD_ROWS):
             for j in range(consts.BOARD_COLS):
-                pygame.draw.rect(screen, consts.RECT_COLOR, i * consts.CELL_SIZE, j = consts.CELL_SIZE, width=1)
+                pygame.draw.rect(screen, consts.BACKGROUND_DARK_SCREEN, i * consts.CELL_SIZE, j=consts.CELL_SIZE,
+                                    width=1)
+
     pygame.display.flip()
 
 
-def create_soldier_screen():
-    soldier1 = pygame.image.load("soldier.png")
-    s = soldier.create_soldier()
-    sized_soldier = pygame.transform.scale(s1, (s["w"] ,s["h"]))
-
-    soldier_box = pygame.surface((s["w"], s["h"]),)
-    #fill
-    soldier_box.blit(sized_soldier,(0,0))
-    return soldier_box
-
-def drow_soldier(soldier1):
-    #צריך גם להכניס את התזוזה?
-
-    screen.blit(soldier1,)
 
 
-
-
+'''
+def draw_bubble(bubble):
+        pygame.draw.circle(screen, bubble["color"],
+                           center=(bubble["center_x"], bubble["center_y"]),
+                           radius=bubble["radius"])
 
 
 def create_arrow(arrow_img):
@@ -56,3 +56,5 @@ def draw_arrow(arrow):
     rotated_arrow_rect = arrow.get_rect(
             center=(consts.ARROW_MIDBOTTOM_X, consts.ARROW_MIDBOTTOM_Y))
     screen.blit(arrow, rotated_arrow_rect)
+
+'''
