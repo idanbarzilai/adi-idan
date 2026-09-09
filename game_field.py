@@ -72,7 +72,6 @@ def create_multiple_mine():
         consts.MINES_LIST.append(create_mine())
 
 def add_mines_to_game_field(row,col):
-
         for i in range(3):
             game_field_matrix[row][(col + i)] = consts.MINE_SQUARE
 
