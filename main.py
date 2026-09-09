@@ -2,22 +2,23 @@ import pygame
 import consts
 import screen
 import soldier
+import game_field
 
 game_state = {
     "state": consts.RUNNING_STATE,
-    "original_screen": True,
-    "dark_screen": False
+    "screen_status": 'light',
+    "soldier" : None
 }
 
 def main():
+    game_field.create_game_field()  # יוצר את הגיים פילד
+    game_state["soldier"] = soldier.create_soldier()
 
     pygame.init()
     running = True
     while running:
-        if game_state["original_screen"]:
-           screen.draw_game("original_screen")
-        else:
-            screen.draw_game("dark_screen")
+        screen.draw_game(game_state)
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -25,6 +26,7 @@ def main():
             soldier.movement(event)
             if soldier.is_soldier_on_flag() or soldier.is_soldier_on_mine():
                 running = False
+
         pygame.display.update()
     pygame.quit()
 
