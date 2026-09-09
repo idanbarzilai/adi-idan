@@ -6,7 +6,7 @@ import game_field
 #initial placing of body
 def body_initial_place():
     l = []
-    for i in range(0, consts.SOLDIER_BODY_ROWS):
+    for i in range(consts.SOLDIER_BODY_ROWS):
         for j in range(consts.SOLDIER_COLS):
             l.append([i,j])
             game_field.game_field_matrix[i][j] = consts.BODY_SQUARE
@@ -16,13 +16,10 @@ def body_initial_place():
 
 #initial placing of legs
 def legs_initial_place():
-    l = []
-    for i in range(0, consts.SOLDIER_FEET_ROWS):
+    row = consts.SOLDIER_BODY_ROWS
         for j in range(consts.SOLDIER_COLS):
-            l.append([i, j])
             game_field.game_field_matrix[i][j] = consts.LEGS_SQUARE
-            consts.LEGS_PLACE.append(l)
-            l = []
+            consts.LEGS_PLACE.append([i,j])
 
 def create_soldier():
     body_initial_place()

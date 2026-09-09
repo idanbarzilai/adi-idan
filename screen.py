@@ -8,17 +8,16 @@ screen = pygame.display.set_mode(
 
 
 
-def drow_soldier(soldier):
-
+def draw_soldier(soldier):
     soldier_image = pygame.image.load("soldier.png")
     sized_soldier = pygame.transform.scale(soldier_image, (soldier["w"], soldier["h"]))
-    screen.blit(sized_soldier,(soldier["x"],soldier["y"])
+    screen.blit(sized_soldier,(soldier["x"],soldier["y"]))
 
 
 def draw_game(game_state):
-    if game_state["original_screen"]:
+    if game_state == "original_screen":
         screen.fill(consts.BACKGROUND_SCREEN)
-    elif game_state["dark_screen"]:
+    elif game_state == "dark_screen":
         screen.fill(consts.BACKGROUND_DARK_SCREEN)
         for i in range(consts.BOARD_ROWS):
             for j in range(consts.BOARD_COLS):
