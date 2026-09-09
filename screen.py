@@ -12,7 +12,7 @@ def drow_soldier(soldier):
 
     soldier_image = pygame.image.load("soldier.png")
     sized_soldier = pygame.transform.scale(soldier_image, (soldier["w"], soldier["h"]))
-    screen.blit(sized_soldier,(soldier["x"],soldier["y"])
+    screen.blit(sized_soldier,(soldier["x"],soldier["y"]))
 
 
 def draw_game(game_state):
