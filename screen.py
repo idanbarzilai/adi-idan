@@ -16,9 +16,9 @@ def drow_soldier(soldier):
 
 
 def draw_game(game_state):
-    if game_state["original_screen"]:
+    if game_state == "original_screen":
         screen.fill(consts.BACKGROUND_SCREEN)
-    elif game_state["dark_screen"]:
+    elif game_state == "dark_screen":
         screen.fill(consts.BACKGROUND_DARK_SCREEN)
         for i in range(consts.BOARD_ROWS):
             for j in range(consts.BOARD_COLS):

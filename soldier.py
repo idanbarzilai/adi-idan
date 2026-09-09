@@ -46,7 +46,7 @@ def is_soldier_on_mine():
 #checking if soldier grab flag
 def is_soldier_on_flag():
     for item in consts.BODY_SQUARE:
-        if game_field.game_field_matrix[item] == consts.FLAG_SQUARE:
+        if item == consts.FLAG_SQUARE:
             return True
     return False
 
@@ -56,6 +56,8 @@ def is_in_field(place):
     return place in game_field.game_field_matrix
 #place of body
 def movement_type(event):
+        d_up_down = 0
+        d_left_right = 0
         if event.type == pygame.KEYDOWN:
             d_up_down = 0
             d_left_right = 0
