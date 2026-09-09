@@ -26,8 +26,9 @@ def create_soldier():
     legs_initial_place()
 
     return {
-        "x": consts.SOLDIER_ROWS*consts.CELL_SIZE,
+        "x": game_field.get_x(consts.BODY_PLACE),
         "y": consts.SOLDIER_COLS*consts.CELL_SIZE
+        "w":
     }
 
 #checking if soldier steps on mine
