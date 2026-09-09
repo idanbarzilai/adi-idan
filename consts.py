@@ -11,7 +11,7 @@ GUARD_IMG = "guard.png"
 INJURY_IMG = "injury.png"
 MINE_IMG = "mine.png"
 SNAKE_IMG = "snake.png"
-SOLDIER = "soldier.png"
+SOLDIER = "pictures/soldier.png"
 SOLDIER_NIGHT_IMG = "soldier_night.png"
 TELEPORT_IMG = "teleport.png"
 
@@ -30,7 +30,7 @@ SOLDIER_FEET_ROWS = 1 # the lower part
 SOLDIER_START_PLACE = (0,0)
 BODY_PLACE=[]
 LEGS_PLACE=[]
-SOLDIER_PLACE = BODY_PLACE + LEGS_PLACE #לבדק שעובד
+SOLDIER_PLACE = []
 
 #consts for flag
 FLAG_ROWS = 3

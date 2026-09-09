@@ -8,28 +8,56 @@ screen = pygame.display.set_mode(
 
 
 
-def drow_soldier(soldier):
-
-    soldier_image = pygame.image.load("soldier.png")
-    sized_soldier = pygame.transform.scale(soldier_image, (soldier["w"], soldier["h"]))
-    screen.blit(sized_soldier,(soldier["x"],soldier["y"]))
+def draw_soldier(soldier_creation):
+    soldier_image = pygame.image.load(consts.SOLDIER)
+    sized_soldier = pygame.transform.scale(soldier_image, (soldier_creation["w"] * 2, soldier_creation["h"]))
+    screen.blit(sized_soldier,(soldier_creation["x"],soldier_creation["y"]))
 
 
 def draw_game(game_state):
-    if game_state == "original_screen":
+    if game_state["screen_status"] == 'light' :
         screen.fill(consts.BACKGROUND_SCREEN)
-    elif game_state == "dark_screen":
+    elif game_state["screen_status"] == "dark":
         screen.fill(consts.BACKGROUND_DARK_SCREEN)
         for i in range(consts.BOARD_ROWS):
             for j in range(consts.BOARD_COLS):
                 pygame.draw.rect(screen, consts.BACKGROUND_DARK_SCREEN, i * consts.CELL_SIZE, j=consts.CELL_SIZE,
                                     width=1)
+    draw_soldier(game_state['soldier'])
     pygame.display.flip()
 
 
 
 
 '''
+
+def draw_game(game_state):
+    screen.fill(consts.BACKGROUND_COLOR)
+    draw_arrow(game_state["rotated_arrow"])
+
+    if game_state["is_bubble_fired"]:
+        draw_bubble(game_state["bullet_bubble"])
+
+    BubblesGrid.draw()
+    draw_border()
+    draw_turns(game_state["turns_left_to_add_row"])
+    Stack.draw()
+
+    if len(game_state["bubbles_popping"]):
+        BubblesGrid.animate_bubbles_pop(game_state["bubbles_popping"])
+        draw_bubbles_popping(game_state["bubbles_popping"])
+
+    elif game_state["state"] == consts.LOSE_STATE:
+        draw_lose_message()
+
+    elif game_state["state"] == consts.WIN_STATE:
+        draw_win_message()
+
+    pygame.display.flip()
+
+
+
+
 def draw_bubble(bubble):
         pygame.draw.circle(screen, bubble["color"],
                            center=(bubble["center_x"], bubble["center_y"]),
