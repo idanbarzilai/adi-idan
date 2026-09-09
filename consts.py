@@ -1,5 +1,4 @@
 #consts for screen
-from soldier import legs_place
 
 BACKGROUND_SCREEN = (143, 188, 143)
 MESSAGE_TEXT = "Welcome to The Flag game.\nHave Fun!"
