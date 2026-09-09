@@ -18,26 +18,33 @@ def main():
     running = True
     while running:
         screen.draw_game(game_state)
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-          ##  if event.type == pygame.Enter
-            soldier.movement(event)
-            if soldier.is_soldier_on_flag() or soldier.is_soldier_on_mine():
-                running = False
+        event_handler()
 
         pygame.display.update()
     pygame.quit()
 
+def event_handler():
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+        if event.type == pygame.KEYDOWN:
+            dr, dc = 0, 0
+            if event.key == pygame.K_UP:
+                dr = -1
+            elif event.key == pygame.K_DOWN:
+                dr = 1
+            elif event.key == pygame.K_LEFT:
+                dc = -1
+            elif event.key == pygame.K_RIGHT:
+                dc = 1
+        if dr != 0 or dc != 0:
+
+            player_r, player_c, pts, mine = move_player(dungeon, player_r, player_c, dr, dc)
+            score += pts
+            if mine:
+                lives -= 1
+                print("BOOM! Hit a mine. Lives left:", lives)
+
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
-
-
