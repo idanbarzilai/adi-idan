@@ -24,7 +24,6 @@ def draw_game(game_state):
             for j in range(consts.BOARD_COLS):
                 pygame.draw.rect(screen, consts.BACKGROUND_DARK_SCREEN, i * consts.CELL_SIZE, j=consts.CELL_SIZE,
                                     width=1)
-
     pygame.display.flip()
 
 

@@ -14,7 +14,10 @@ def main():
     pygame.init()
     running = True
     while running:
-        screen.draw_game()
+        if game_state["original_screen"]:
+           screen.draw_game("original_screen")
+        else:
+            screen.draw_game("dark_screen")
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -22,6 +25,11 @@ def main():
             soldier.movement(event)
             if soldier.is_soldier_on_flag() or soldier.is_soldier_on_mine():
                 running = False
+        pygame.display.update()
+    pygame.quit()
+
+if __name__ == '__main__':
+    main()
 
 
 
